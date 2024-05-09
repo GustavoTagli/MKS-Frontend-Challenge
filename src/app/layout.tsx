@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Montserrat } from "next/font/google"
 import "./globals.css"
+import { DefaultProviders } from "@/components/default-providers"
 
 const montserrat = Montserrat({
 	subsets: ["latin"]
@@ -17,7 +18,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="pt-br">
-			<body className={montserrat.className}>{children}</body>
+			<DefaultProviders>
+				<body className={montserrat.className}>{children}</body>
+			</DefaultProviders>
 		</html>
 	)
 }

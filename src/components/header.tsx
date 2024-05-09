@@ -1,14 +1,15 @@
-"use client"
-
 import styled from "styled-components"
 import { CartControl } from "./cart-control"
 
 const TagHeader = styled.header`
+	flex: 0 0 auto;
+	height: 80px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	background-color: var(--secondary-color);
 	padding: 20px 64px;
+	width: 100%;
 
 	font-family: inherit;
 

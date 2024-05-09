@@ -1,7 +1,7 @@
-import { ShoppingCartSimple } from "@phosphor-icons/react"
+import { ShoppingCart } from "@phosphor-icons/react"
 import styled from "styled-components"
 
-const Container = styled.div`
+const Container = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -13,6 +13,9 @@ const Container = styled.div`
 
 	background-color: var(--primary-color);
 	color: var(--dark-10);
+	outline: none;
+	border: none;
+	cursor: pointer;
 
 	> span {
 		font-size: 18px;
@@ -23,7 +26,7 @@ const Container = styled.div`
 export function CartControl() {
 	return (
 		<Container>
-			<ShoppingCartSimple weight="fill" size={20} />
+			<ShoppingCart weight="fill" size={20} />
 			<span>0</span>
 		</Container>
 	)
