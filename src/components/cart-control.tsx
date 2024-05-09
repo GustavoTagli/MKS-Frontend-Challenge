@@ -1,5 +1,11 @@
+import { useCart } from "@/hooks/use-cart"
 import { ShoppingCart } from "@phosphor-icons/react"
+import { useState } from "react"
 import styled from "styled-components"
+
+interface CartControlProps {
+	toggleDrawer: (newOpen: boolean) => () => void
+}
 
 const Container = styled.button`
 	display: flex;
@@ -23,11 +29,13 @@ const Container = styled.button`
 	}
 `
 
-export function CartControl() {
+export function CartControl({ toggleDrawer }: CartControlProps) {
+	const { cartItems } = useCart()
+
 	return (
-		<Container>
+		<Container onClick={toggleDrawer(true)}>
 			<ShoppingCart weight="fill" size={20} />
-			<span>0</span>
+			<span>{cartItems.length}</span>
 		</Container>
 	)
 }

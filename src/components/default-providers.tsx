@@ -1,5 +1,6 @@
 "use client"
 
+import { CartContextProvider } from "@/contexts/cart-context"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 interface DefaultProvidersProps {
@@ -9,5 +10,9 @@ interface DefaultProvidersProps {
 export function DefaultProviders({ children }: DefaultProvidersProps) {
 	const client = new QueryClient()
 
-	return <QueryClientProvider client={client}>{children}</QueryClientProvider>
+	return (
+		<QueryClientProvider client={client}>
+			<CartContextProvider>{children}</CartContextProvider>
+		</QueryClientProvider>
+	)
 }

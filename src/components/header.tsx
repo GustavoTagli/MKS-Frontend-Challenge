@@ -1,5 +1,7 @@
 import styled from "styled-components"
 import { CartControl } from "./cart-control"
+import { CartMenu } from "./cart-menu"
+import { useState } from "react"
 
 const TagHeader = styled.header`
 	flex: 0 0 auto;
@@ -27,13 +29,20 @@ const TagHeader = styled.header`
 `
 
 export function Header() {
+	const [open, setOpen] = useState(false)
+
+	const toggleDrawer = (newOpen: boolean) => () => {
+		setOpen(newOpen)
+	}
+
 	return (
 		<TagHeader>
 			<h1>
 				MKS
 				<span>Sistemas</span>
 			</h1>
-			<CartControl />
+			<CartControl toggleDrawer={toggleDrawer} />
+			<CartMenu open={open} toggleDrawer={toggleDrawer} />
 		</TagHeader>
 	)
 }
