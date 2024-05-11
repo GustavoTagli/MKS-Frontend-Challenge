@@ -1,8 +1,9 @@
-import { useCart } from "@/hooks/use-cart"
+import { useCart } from "@/hooks/useCart"
 import { Product } from "@/types/product"
 import { formatCurrency } from "@/utils/format-currency"
 import { Snackbar, Tooltip } from "@mui/material"
 import { ShoppingBagOpen } from "@phosphor-icons/react"
+import { HTMLMotionProps, motion } from "framer-motion"
 import Image from "next/image"
 import { useState } from "react"
 import styled from "styled-components"
@@ -11,7 +12,7 @@ interface GridProductItemProps {
 	product: Product
 }
 
-const ContainerProduct = styled.div`
+const ContainerProduct = styled(motion.div)`
 	height: 300px;
 	width: 220px;
 	padding: 14px;
@@ -142,7 +143,11 @@ export function GridProductItem({ product }: GridProductItemProps) {
 	}
 
 	return (
-		<ContainerProduct>
+		<ContainerProduct
+			initial={{ opacity: 0 }}
+			animate="visible"
+			variants={{ visible: { opacity: 1 } }}
+		>
 			<figure>
 				<Image
 					src={product.photo}
@@ -158,14 +163,12 @@ export function GridProductItem({ product }: GridProductItemProps) {
 						<div>
 							<p>
 								R$
-								<span>{formatCurrency(product.price)}</span>
+								{formatCurrency(product.price)}
 							</p>
 						</div>
 					</div>
 				</Tooltip>
-				<Tooltip title={product.description}>
-					<p>{product.description}</p>
-				</Tooltip>
+				<p>{product.description}</p>
 			</ProductInfo>
 			<button onClick={handleAddToCart}>
 				<ShoppingBagOpen size={16} />

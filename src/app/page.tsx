@@ -15,12 +15,18 @@ const Container = styled.div`
 
 	> main {
 		flex: 1 1 auto;
-		width: 1024px;
+		width: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		padding: 36px 24px;
+	}
+
+	@media (max-width: ${({ theme }) => theme.desktopBreakpoint}) {
+		> main {
+			margin-top: 80px;
+		}
 	}
 `
 

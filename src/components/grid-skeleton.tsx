@@ -1,14 +1,28 @@
 import { Skeleton, Stack } from "@mui/material"
+import { motion } from "framer-motion"
+
+const MotionStack = motion(Stack)
 
 export function GridSkeleton() {
 	return (
-		<Stack
+		<MotionStack
+			initial={{ opacity: 0, x: -40 }}
+			animate="visible"
+			variants={{
+				visible: {
+					opacity: 1,
+					x: 0,
+					transition: {
+						y: { stiffness: 1000, velocity: -100 }
+					}
+				}
+			}}
 			spacing={1}
 			padding={"14px"}
 			style={{
 				backgroundColor: "var(--primary-color)",
 				borderRadius: "8px",
-				boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25);",
+				boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
 				position: "relative",
 				width: "220px",
 				height: "300px"
@@ -54,6 +68,6 @@ export function GridSkeleton() {
 					left: 0
 				}}
 			/>
-		</Stack>
+		</MotionStack>
 	)
 }

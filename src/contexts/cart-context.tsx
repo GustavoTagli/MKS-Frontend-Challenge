@@ -21,7 +21,6 @@ export function CartContextProvider({ children }: ProviderProps) {
 	}, [])
 
 	const updateCartItems = (newProducts: CartItem[]) => {
-		console.log(newProducts)
 		setCartItems(newProducts)
 		localStorage.setItem("cart-items-mks", JSON.stringify(newProducts))
 	}

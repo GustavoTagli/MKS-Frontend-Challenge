@@ -4,9 +4,14 @@ import styled from "styled-components"
 interface CloseButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 	onClick: () => void
 	size: number
+	padding?: number
 }
 
-const Container = styled.button`
+interface ContainerProps {
+	padding?: number
+}
+
+const Container = styled.button<ContainerProps>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -15,16 +20,29 @@ const Container = styled.button`
 	border-radius: 50%;
 	outline: none;
 	cursor: pointer;
-	padding: 8px;
+	padding: ${(props) => (props.padding ? `${props.padding}px` : "8px")};
 
 	> svg {
 		color: var(--primary-color);
 	}
+
+	@media (max-width: ${({ theme }) => theme.mobileBreakpoint}) {
+		> svg {
+			color: var(--secondary-color);
+			width: 28px;
+			height: 28px;
+		}
+	}
 `
 
-export function CloseButton({ onClick, size }: CloseButtonProps) {
+export function CloseButton({
+	onClick,
+	size,
+	padding,
+	...rest
+}: CloseButtonProps) {
 	return (
-		<Container onClick={onClick}>
+		<Container {...rest} onClick={onClick} padding={padding}>
 			<X size={size} weight="bold" />
 		</Container>
 	)

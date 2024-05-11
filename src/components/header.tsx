@@ -26,12 +26,27 @@ const TagHeader = styled.header`
 			margin-left: 5px;
 		}
 	}
+
+	@media (max-width: ${({ theme }) => theme.desktopBreakpoint}) {
+		position: fixed;
+		z-index: 1000;
+	}
+
+	@media (max-width: ${({ theme }) => theme.mobileBreakpoint}) {
+		padding: 20px 20px;
+		> h1 {
+			font-size: 32px;
+			> span {
+				font-size: 16px;
+			}
+		}
+	}
 `
 
 export function Header() {
 	const [open, setOpen] = useState(false)
 
-	const toggleDrawer = (newOpen: boolean) => () => {
+	const toggleDrawer = (newOpen: boolean) => {
 		setOpen(newOpen)
 	}
 
