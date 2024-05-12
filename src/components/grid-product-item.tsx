@@ -3,7 +3,7 @@ import { Product } from "@/types/product"
 import { formatCurrency } from "@/utils/format-currency"
 import { Snackbar, Tooltip } from "@mui/material"
 import { ShoppingBagOpen } from "@phosphor-icons/react"
-import { HTMLMotionProps, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import Image from "next/image"
 import { useState } from "react"
 import styled from "styled-components"
@@ -13,6 +13,7 @@ interface GridProductItemProps {
 }
 
 const ContainerProduct = styled(motion.div)`
+	user-select: none;
 	height: 300px;
 	width: 220px;
 	padding: 14px;
@@ -143,43 +144,45 @@ export function GridProductItem({ product }: GridProductItemProps) {
 	}
 
 	return (
-		<ContainerProduct
-			initial={{ opacity: 0 }}
-			animate="visible"
-			variants={{ visible: { opacity: 1 } }}
-		>
-			<figure>
-				<Image
-					src={product.photo}
-					alt={`Imagem do produto: ${product.name}`}
-					width={170}
-					height={130}
-				/>
-			</figure>
-			<ProductInfo>
-				<Tooltip title={`${product.brand} ${product.name}`}>
-					<div>
-						<h3>{`${product.brand} ${product.name}`}</h3>
+		<>
+			<ContainerProduct
+				initial={{ opacity: 0 }}
+				animate="visible"
+				variants={{ visible: { opacity: 1 } }}
+			>
+				<figure>
+					<Image
+						src={product.photo}
+						alt={`Imagem do produto: ${product.name}`}
+						width={170}
+						height={130}
+					/>
+				</figure>
+				<ProductInfo>
+					<Tooltip title={`${product.brand} ${product.name}`}>
 						<div>
-							<p>
-								R$
-								{formatCurrency(product.price)}
-							</p>
+							<h3>{`${product.brand} ${product.name}`}</h3>
+							<div>
+								<p>
+									R$
+									{formatCurrency(product.price)}
+								</p>
+							</div>
 						</div>
-					</div>
-				</Tooltip>
-				<p>{product.description}</p>
-			</ProductInfo>
-			<button onClick={handleAddToCart}>
-				<ShoppingBagOpen size={16} />
-				<span>Comprar</span>
-			</button>
+					</Tooltip>
+					<p>{product.description}</p>
+				</ProductInfo>
+				<button onClick={handleAddToCart}>
+					<ShoppingBagOpen size={16} />
+					<span>Comprar</span>
+				</button>
+			</ContainerProduct>
 			<Snackbar
 				open={openSnackbar}
 				onClose={() => setOpenSnackbar(false)}
 				autoHideDuration={3000}
 				message={"Produto adicionado ao carrinho com sucesso!"}
 			/>
-		</ContainerProduct>
+		</>
 	)
 }

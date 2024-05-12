@@ -34,7 +34,6 @@ const QuantityContainer = styled.div`
 
 		> button {
 			width: 10px;
-			// height: 10px;
 			display: flex;
 			align-items: center;
 			background-color: transparent;
@@ -49,7 +48,7 @@ const QuantityContainer = styled.div`
 			font-family: inherit;
 			font-weight: 400;
 			color: var(--dark-10);
-			width: 10px;
+			min-width: 16px;
 			text-align: center;
 		}
 
@@ -71,10 +70,7 @@ const QuantityContainer = styled.div`
 	}
 `
 
-export function QuantityControl({
-	quantity,
-	updateQuantity
-}: QuantityControlProps) {
+export function QuantityControl({ quantity, updateQuantity }: QuantityControlProps) {
 	const handleDecrement = () => updateQuantity(quantity - 1)
 	const handleIncrement = () => updateQuantity(quantity + 1)
 

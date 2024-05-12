@@ -1,5 +1,7 @@
 import { useCart } from "@/hooks/useCart"
 import { ShoppingCart } from "@phosphor-icons/react"
+import { motion } from "framer-motion"
+import { act, use, useEffect, useState } from "react"
 import styled from "styled-components"
 
 interface CartControlProps {
@@ -40,12 +42,44 @@ const Container = styled.button`
 	}
 `
 
+const MotionIcon = motion(ShoppingCart)
+
+const variants = {
+	active: {
+		scale: 1.1,
+		rotate: [0, 110, -110, 0],
+		transition: {
+			type: "spring",
+			stiffness: 300,
+			damping: 4
+		}
+	},
+	inactive: {
+		scale: 1
+	}
+}
+
 export function CartControl({ toggleDrawer }: CartControlProps) {
 	const { cartItems } = useCart()
+	const [isCartItemsChanged, setIsCartItemsChanged] = useState(false)
+
+	useEffect(() => {
+		setIsCartItemsChanged(true)
+		const timer = setTimeout(() => {
+			setIsCartItemsChanged(false)
+		}, 800)
+
+		return () => clearTimeout(timer)
+	}, [cartItems])
 
 	return (
 		<Container onClick={() => toggleDrawer(true)}>
-			<ShoppingCart weight="fill" size={20} />
+			<MotionIcon
+				animate={isCartItemsChanged ? "active" : "inactive"}
+				variants={variants}
+				weight="fill"
+				size={20}
+			/>
 			<span>{cartItems.length}</span>
 		</Container>
 	)

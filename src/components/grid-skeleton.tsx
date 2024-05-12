@@ -6,12 +6,12 @@ const MotionStack = motion(Stack)
 export function GridSkeleton() {
 	return (
 		<MotionStack
-			initial={{ opacity: 0, x: -40 }}
+			initial={{ opacity: 0, y: 40 }}
 			animate="visible"
 			variants={{
 				visible: {
 					opacity: 1,
-					x: 0,
+					y: 0,
 					transition: {
 						y: { stiffness: 1000, velocity: -100 }
 					}
@@ -45,12 +45,7 @@ export function GridSkeleton() {
 					sx={{ fontSize: "1.8rem" }}
 					width={"60%"}
 				/>
-				<Skeleton
-					animation="wave"
-					variant="rounded"
-					width={"40%"}
-					height={24}
-				/>
+				<Skeleton animation="wave" variant="rounded" width={"40%"} height={24} />
 			</Stack>
 			<Stack>
 				<Skeleton animation="wave" variant="text" sx={{ fontSize: ".6rem" }} />

@@ -4,9 +4,16 @@ import { CloseButton } from "./close-button"
 import { useCart } from "@/hooks/useCart"
 import { CardCartItem } from "./card-cart-item"
 import { formatCurrency } from "@/utils/format-currency"
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { use, useEffect, useState } from "react"
+import {
+	AnimatePresence,
+	animate,
+	motion,
+	useMotionValue,
+	useTransform
+} from "framer-motion"
 import { ToastMessage } from "./toast-message"
+import { When } from "./when"
 
 interface CartMenuProps {
 	open: boolean
@@ -50,6 +57,21 @@ const ItemsContainer = styled(motion.div)`
 	padding: 10px;
 	overflow-y: auto;
 	height: 100%;
+
+	@media (min-width: ${({ theme }) => theme.desktopBreakpoint}) {
+		&::-webkit-scrollbar {
+			width: 5px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: rgba(0, 0, 0, 0.6);
+			border-radius: 5px;
+		}
+
+		&::-webkit-scrollbar-track {
+			background-color: transparent;
+		}
+	}
 
 	@media (max-width: ${({ theme }) => theme.mobileBreakpoint}) {
 		margin-top: 20px;
@@ -99,7 +121,11 @@ const TotalContainer = styled.div`
 
 const variants = {
 	open: {
-		transition: { staggerChildren: 0.07, delayChildren: 0.2 }
+		transition: {
+			staggerChildren: 0.08,
+			delayChildren: 0.25,
+			staggerDirection: 1
+		}
 	},
 	closed: {
 		transition: { staggerChildren: 0.05, staggerDirection: -1 }
@@ -110,6 +136,21 @@ export function CartMenu({ open, toggleDrawer }: CartMenuProps) {
 	const { cartItems, updateCartItems } = useCart()
 	const [openSnackbar, setOpenSnackbar] = useState(false)
 	const [openSnackbarEmptyCart, setOpenSnackbarEmptyCart] = useState(false)
+	const count = useMotionValue(0)
+	const amount = useTransform(count, (value) => formatCurrency(Math.round(value)))
+
+	useEffect(() => {
+		const amountFinal = cartItems.reduce(
+			(accum, item) => accum + item.quantity * item.price,
+			0
+		)
+		const animation = animate(count, amountFinal, {
+			duration: 1,
+			ease: "backInOut"
+		})
+
+		return animation.stop
+	}, [cartItems])
 
 	const handleFinishShopping = () => {
 		if (cartItems.length === 0) {
@@ -140,31 +181,26 @@ export function CartMenu({ open, toggleDrawer }: CartMenuProps) {
 						variants={variants}
 						animate={open ? "open" : "closed"}
 					>
-						{cartItems.length === 0 && (
-							<Stack
-								alignItems={"center"}
-								justifyContent={"center"}
-								height={"100%"}
-							>
+						<When expr={cartItems.length > 0}>
+							<AnimatePresence mode="sync">
+								{cartItems.map((item) => (
+									<CardCartItem key={item.id} {...item} />
+								))}
+							</AnimatePresence>
+						</When>
+						<When expr={cartItems.length === 0}>
+							<Stack alignItems={"center"} justifyContent={"center"} height={"100%"}>
 								<p>Seu carrinho está vazio</p>
 							</Stack>
-						)}
-						{cartItems.map((item) => (
-							<CardCartItem key={item.id} {...item} />
-						))}
+						</When>
 					</ItemsContainer>
 					<TotalContainer>
 						<div>
 							<p>Total</p>
-							<span>
+							<motion.span>
 								R$
-								{formatCurrency(
-									cartItems.reduce(
-										(accum, item) => accum + item.quantity * item.price,
-										0
-									)
-								)}
-							</span>
+								<motion.span>{amount}</motion.span>
+							</motion.span>
 						</div>
 						<button onClick={handleFinishShopping}>Finalizar Compra</button>
 					</TotalContainer>

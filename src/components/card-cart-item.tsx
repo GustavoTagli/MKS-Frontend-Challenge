@@ -5,8 +5,8 @@ import { formatCurrency } from "@/utils/format-currency"
 import styled from "styled-components"
 import { CloseButton } from "./close-button"
 import { useCart } from "@/hooks/useCart"
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+import { animate, motion, useMotionValue, useTransform } from "framer-motion"
 
 const Card = styled(motion.div)`
 	display: grid;
@@ -125,6 +125,19 @@ const variants = {
 export function CardCartItem(props: CartItem) {
 	const [quantity, setQuantity] = useState(props.quantity || 1)
 	const { cartItems, updateCartItems } = useCart()
+	const count = useMotionValue(0)
+	const amount = useTransform(count, (value) => formatCurrency(Math.round(value)))
+
+	useEffect(() => {
+		const amountFinal = props.quantity * props.price
+
+		const animation = animate(count, amountFinal, {
+			duration: 0.6,
+			ease: "backInOut"
+		})
+
+		return animation.stop
+	}, [props.quantity, props.price])
 
 	const handleDeleteFromCart = () => {
 		const newCartItems = cartItems.filter((item) => item.id !== props.id)
@@ -138,12 +151,23 @@ export function CardCartItem(props: CartItem) {
 			}
 			return item
 		})
+
 		updateCartItems(newCartItems)
 		setQuantity(newQuantity)
 	}
 
 	return (
-		<Card variants={variants}>
+		<Card
+			variants={variants}
+			layout
+			animate={{ scale: 1, opacity: 1 }}
+			exit={{
+				scale: [1, 0.9, 1],
+				opacity: [1, 0.9, 0.6, 0],
+				transition: { duration: 0.35, damping: 5 }
+			}}
+			transition={{ type: "spring", damping: 17, stiffness: 100 }}
+		>
 			<figure>
 				<Image
 					width={60}
@@ -155,7 +179,10 @@ export function CardCartItem(props: CartItem) {
 			<h4>{`${props.brand} ${props.name}`}</h4>
 			<QuantityControl quantity={quantity} updateQuantity={updateQuantity} />
 			<PriceContainer>
-				<p>{`R$${formatCurrency(props.price * props.quantity)}`}</p>
+				<p>
+					R$
+					<motion.span>{amount}</motion.span>
+				</p>
 			</PriceContainer>
 
 			<ContainerAbsolute>
