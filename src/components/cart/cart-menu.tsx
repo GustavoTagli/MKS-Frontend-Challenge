@@ -1,5 +1,4 @@
 import { Drawer, Stack } from "@mui/material"
-import styled from "styled-components"
 import { CloseButton } from "../close-button"
 import { useCart } from "@/hooks/useCart"
 import { CardCartItem } from "./card-cart-item"
@@ -14,110 +13,12 @@ import {
 } from "framer-motion"
 import { ToastMessage } from "../toast-message"
 import { When } from "../when"
+import { CartContainer, ItemsContainer, TotalContainer } from "@/styles/Cart.style"
 
 interface CartMenuProps {
 	open: boolean
 	toggleDrawer: (newOpen: boolean) => void
 }
-
-const CartContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 486px;
-	height: 100vh;
-	background-color: var(--secondary-color);
-	color: var(--primary-color);
-	padding: 32px;
-	position: relative;
-
-	> div:first-of-type {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-
-		> h3 {
-			font-size: 28px;
-			font-family: inherit;
-			font-weight: 700;
-		}
-	}
-
-	@media (max-width: ${({ theme }) => theme.mobileBreakpoint}) {
-		width: 90vw;
-	}
-`
-
-const ItemsContainer = styled(motion.div)`
-	flex: 0 1 auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 24px;
-	margin: 40px 0 120px 0;
-	padding: 10px;
-	overflow-y: auto;
-	height: 100%;
-
-	@media (min-width: ${({ theme }) => theme.desktopBreakpoint}) {
-		&::-webkit-scrollbar {
-			width: 5px;
-		}
-
-		&::-webkit-scrollbar-thumb {
-			background-color: rgba(0, 0, 0, 0.6);
-			border-radius: 5px;
-		}
-
-		&::-webkit-scrollbar-track {
-			background-color: transparent;
-		}
-	}
-
-	@media (max-width: ${({ theme }) => theme.mobileBreakpoint}) {
-		margin-top: 20px;
-	}
-`
-
-const TotalContainer = styled.div`
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-
-	font-size: 24px;
-	font-family: inherit;
-	font-weight: 700;
-	color: var(--primary-color);
-
-	> button,
-	> div {
-		font-size: 24px;
-		font-family: inherit;
-		font-weight: 700;
-		color: var(--primary-color);
-	}
-
-	> div {
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		padding: 24px 32px;
-	}
-
-	> button {
-		background-color: var(--dark-10);
-		width: 100%;
-		margin: 0 auto;
-		padding: 24px;
-
-		cursor: pointer;
-
-		outline: none;
-		border: none;
-	}
-`
 
 const variants = {
 	open: {

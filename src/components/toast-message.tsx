@@ -7,12 +7,7 @@ interface ToastMessageProps {
 	severity: "success" | "error" | "warning" | "info"
 }
 
-export function ToastMessage({
-	open,
-	onClose,
-	message,
-	severity
-}: ToastMessageProps) {
+export function ToastMessage({ open, onClose, message, severity }: ToastMessageProps) {
 	return (
 		<Snackbar open={open} autoHideDuration={4000} onClose={onClose}>
 			<Alert
