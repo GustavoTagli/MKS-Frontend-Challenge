@@ -1,4 +1,4 @@
-import { CartMenu } from "@/components/cart-menu"
+import { CartMenu } from "@/components/cart/cart-menu"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { faker } from "@faker-js/faker"
 
