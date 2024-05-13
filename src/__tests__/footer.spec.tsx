@@ -2,18 +2,18 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { render, screen } from "@testing-library/react"
 import React from "react"
 import "@testing-library/jest-dom"
-import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 
 const renderComponent = () => {
-	render(<Header />)
+	render(<Footer />)
 }
 
-describe("Header", () => {
-	it("should render a heading", () => {
+describe("Footer", () => {
+	it("should render a footer", () => {
 		renderComponent()
 
-		const heading = screen.getByTestId("heading")
+		const footer = screen.getByTestId("footer")
 
-		expect(heading).toBeInTheDocument()
+		expect(footer).toBeInTheDocument()
 	})
 })

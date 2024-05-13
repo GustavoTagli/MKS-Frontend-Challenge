@@ -51,7 +51,7 @@ export function Header() {
 	}
 
 	return (
-		<TagHeader>
+		<TagHeader data-testid="heading">
 			<h1>
 				MKS
 				<span>Sistemas</span>

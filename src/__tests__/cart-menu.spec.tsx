@@ -1,5 +1,4 @@
 import { CartMenu } from "@/components/cart-menu"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { faker } from "@faker-js/faker"
 
@@ -8,17 +7,11 @@ import "@testing-library/jest-dom"
 const mockUseCart = jest.fn()
 
 jest.mock("../hooks/useCart", () => ({
-	...jest.requireActual("../hooks/useCart"),
 	useCart: () => mockUseCart()
 }))
 
 const renderComponent = (toggleDrawer: () => void) => {
-	const queryClient = new QueryClient()
-	render(
-		<QueryClientProvider client={queryClient}>
-			<CartMenu open={true} toggleDrawer={toggleDrawer} />
-		</QueryClientProvider>
-	)
+	render(<CartMenu open={true} toggleDrawer={toggleDrawer} />)
 }
 
 describe("CartMenu", () => {

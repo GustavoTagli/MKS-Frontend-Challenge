@@ -6,6 +6,7 @@ const MotionStack = motion(Stack)
 export function GridSkeleton() {
 	return (
 		<MotionStack
+			data-testid="grid-skeleton"
 			initial={{ opacity: 0, y: 40 }}
 			animate="visible"
 			variants={{

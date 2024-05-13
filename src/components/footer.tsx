@@ -18,7 +18,7 @@ const TagFooter = styled.footer`
 
 export function Footer() {
 	return (
-		<TagFooter>
+		<TagFooter data-testid="footer">
 			<p>MKS sistemas © Todos os direitos reservados</p>
 		</TagFooter>
 	)
