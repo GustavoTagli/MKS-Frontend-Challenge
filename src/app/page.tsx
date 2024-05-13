@@ -1,7 +1,7 @@
 "use client"
 
 import { Footer } from "@/components/footer"
-import { GridProducts } from "@/components/grid-products"
+import { GridProducts } from "@/components/grid/grid-products"
 import { Header } from "@/components/header"
 import styled from "styled-components"
 

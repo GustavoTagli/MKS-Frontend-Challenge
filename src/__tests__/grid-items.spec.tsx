@@ -1,4 +1,4 @@
-import { GridProducts } from "@/components/grid-products"
+import { GridProducts } from "@/components/ggrid/grid-products"
 import { render, screen } from "@testing-library/react"
 import { faker } from "@faker-js/faker"
 

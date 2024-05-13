@@ -1,10 +1,10 @@
 import { Drawer, Stack } from "@mui/material"
 import styled from "styled-components"
-import { CloseButton } from "./close-button"
+import { CloseButton } from "../close-button"
 import { useCart } from "@/hooks/useCart"
 import { CardCartItem } from "./card-cart-item"
 import { formatCurrency } from "@/utils/format-currency"
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import {
 	AnimatePresence,
 	animate,
@@ -12,8 +12,8 @@ import {
 	useMotionValue,
 	useTransform
 } from "framer-motion"
-import { ToastMessage } from "./toast-message"
-import { When } from "./when"
+import { ToastMessage } from "../toast-message"
+import { When } from "../when"
 
 interface CartMenuProps {
 	open: boolean

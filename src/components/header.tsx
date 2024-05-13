@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { CartControl } from "./cart-control"
-import { CartMenu } from "./cart-menu"
+import { CartControl } from "./cart/cart-control"
+import { CartMenu } from "./cart/cart-menu"
 import { useState } from "react"
 
 const TagHeader = styled.header`

@@ -2,7 +2,7 @@ import { useProducts } from "@/hooks/useProducts"
 import styled from "styled-components"
 import { GridProductItem } from "./grid-product-item"
 import { GridSkeleton } from "./grid-skeleton"
-import { When } from "./when"
+import { When } from "../when"
 
 const GridContainer = styled.section`
 	position: relative;

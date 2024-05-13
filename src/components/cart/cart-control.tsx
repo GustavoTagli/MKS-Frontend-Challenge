@@ -1,7 +1,7 @@
 import { useCart } from "@/hooks/useCart"
 import { ShoppingCart } from "@phosphor-icons/react"
 import { motion } from "framer-motion"
-import { act, use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 
 interface CartControlProps {
