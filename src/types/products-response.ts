@@ -1,6 +1,6 @@
-import { Product } from "./product"
+import { Product } from './product';
 
 export interface ProductsFetchResponse {
-	products: Product[]
-	count: number
+  products: Product[];
+  count: number;
 }

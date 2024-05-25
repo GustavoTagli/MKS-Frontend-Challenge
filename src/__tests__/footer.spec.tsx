@@ -1,18 +1,18 @@
-import { render, screen } from "@testing-library/react"
-import React from "react"
-import "@testing-library/jest-dom"
-import { Footer } from "@/components/footer"
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import '@testing-library/jest-dom';
+import { Footer } from '@/components/footer';
 
 const renderComponent = () => {
-	render(<Footer />)
-}
+  render(<Footer />);
+};
 
-describe("Footer", () => {
-	it("should render a footer", () => {
-		renderComponent()
+describe('Footer', () => {
+  it('should render a footer', () => {
+    renderComponent();
 
-		const footer = screen.getByTestId("footer")
+    const footer = screen.getByTestId('footer');
 
-		expect(footer).toBeInTheDocument()
-	})
-})
+    expect(footer).toBeInTheDocument();
+  });
+});
