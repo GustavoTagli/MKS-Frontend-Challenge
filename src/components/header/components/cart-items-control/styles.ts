@@ -16,6 +16,8 @@ export const Container = styled.button`
   border: none;
   cursor: pointer;
 
+  font-family: inherit;
+
   > span {
     font-size: 18px;
     font-weight: 700;

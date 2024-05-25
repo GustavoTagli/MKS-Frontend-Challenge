@@ -11,6 +11,8 @@ export const ButtonContainer = styled.button`
   gap: 12px;
   padding: 8px 0;
 
+  font-family: inherit;
+
   background-color: var(--secondary-color);
   color: var(--primary-color);
   border: none;
@@ -18,7 +20,6 @@ export const ButtonContainer = styled.button`
 
   > span {
     text-transform: uppercase;
-    font-family: inherit;
     font-size: 14px;
     font-weight: 600;
   }

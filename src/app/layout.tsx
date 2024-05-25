@@ -22,15 +22,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pt-br'>
-      <DefaultProviders>
-        <body className={montserrat.className}>
+      <body className={montserrat.className}>
+        <DefaultProviders>
           <StyledComponentsRegistry>
             <Header />
             {children}
             <Footer />
           </StyledComponentsRegistry>
-        </body>
-      </DefaultProviders>
+        </DefaultProviders>
+      </body>
     </html>
   )
 }

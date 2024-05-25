@@ -40,7 +40,7 @@ export const CartItemsContainer = styled(motion.div)`
   height: 100%;
 
   @media (min-width: ${({ theme }) => theme.desktopBreakpoint}) {
-    scrollbar-color: rgba(0, 0, 0, 0.6) transparent;
+    scrollbar-color: rgba(0, 0, 0, 0.8) transparent;
     scrollbar-width: thin;
     scrollbar-track-color: transparent;
   }
