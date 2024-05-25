@@ -26,7 +26,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/__tests__/index.test.jsx"
+    "src/components/header/__tests__/index.test.jsx"
   ],
   "exclude": ["node_modules"]
 }

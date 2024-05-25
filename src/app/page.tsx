@@ -1,18 +1,17 @@
-'use client';
+'use client'
 
-import { Footer } from '@/components/footer';
-import { GridProducts } from '@/components/grid/grid-products';
-import { Header } from '@/components/header';
-import { BoxMain } from '@/styles/Home.style';
+import { Cart } from '@/components/cart'
+import { GridProducts } from '@/components/grid-products'
+
+import * as Styles from './styles'
 
 export default function Home() {
   return (
-    <BoxMain>
-      <Header />
-      <main>
+    <>
+      <Styles.MainContainer>
         <GridProducts />
-      </main>
-      <Footer />
-    </BoxMain>
-  );
+        <Cart />
+      </Styles.MainContainer>
+    </>
+  )
 }
