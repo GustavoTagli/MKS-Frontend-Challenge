@@ -10,16 +10,15 @@ import {
   decreaseQuantityProduct,
   increaseQuantityProduct,
   removeProduct,
-  setCartItems,
   toggleCart,
 } from '@/lib/redux/cart/slice'
-import { Product, ProductInCart } from '@/types/product'
+import { Product } from '@/types/product'
 import { useDispatch, useSelector } from 'react-redux'
 
 export function useCart() {
   const dispatch = useDispatch()
 
-  const cart = {
+  return {
     cartItems: useSelector(selectCartItems),
     totalItems: useSelector(selectCartItemsCount),
     totalAmount: useSelector(selectCartTotal),
@@ -33,6 +32,4 @@ export function useCart() {
     decreaseQuantityProduct: (productId: string) =>
       dispatch(decreaseQuantityProduct(productId)),
   }
-
-  return cart
 }

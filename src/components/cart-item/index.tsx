@@ -1,4 +1,5 @@
-import { cardVariants } from '@/lib/framer-motion/variants'
+import { useCart } from '@/hooks/useCart'
+import { cardItemVariants } from '@/lib/framer-motion/variants'
 import { ProductInCart } from '@/types/product'
 import { formatCurrency } from '@/utils/format-currency'
 import { animate, motion, useMotionValue, useTransform } from 'framer-motion'
@@ -6,7 +7,6 @@ import Image from 'next/image'
 import { useEffect } from 'react'
 import { CloseButton } from '../ui/closeButton'
 import { QuantityControl } from './components/quantity-control'
-import { useCart } from '@/hooks/useCart'
 
 import * as Styles from './styles'
 
@@ -26,7 +26,7 @@ export function CartItem(product: ProductInCart) {
     })
 
     return animation.stop
-  }, [product.quantity, product.price])
+  }, [product.quantity, product.price, count])
 
   const handleDeleteFromCart = () => {
     removeProduct(product.id)
@@ -34,10 +34,10 @@ export function CartItem(product: ProductInCart) {
 
   return (
     <Styles.Card
-      variants={cardVariants}
+      variants={cardItemVariants}
       layout
       animate={{ scale: 1, opacity: 1 }}
-      exit={cardVariants.exit}
+      exit={cardItemVariants.exit}
       transition={{ type: 'spring', damping: 17, stiffness: 100 }}
     >
       <Styles.CardImage>

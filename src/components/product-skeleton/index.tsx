@@ -1,42 +1,22 @@
+import { skeletonVariants } from '@/lib/framer-motion/variants'
 import { Skeleton, Stack } from '@mui/material'
-import { motion } from 'framer-motion'
 
-const MotionStack = motion(Stack)
+import * as Styles from './styles'
 
 export function ProductSkeleton() {
   return (
-    <MotionStack
+    <Styles.MotionStack
       data-testid='grid-skeleton'
-      initial={{ opacity: 0, y: 40 }}
+      initial={skeletonVariants.initial}
       animate='visible'
-      variants={{
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            y: { stiffness: 1000, velocity: -100 },
-          },
-        },
-      }}
+      variants={skeletonVariants}
       spacing={1}
-      padding={'14px'}
-      style={{
-        backgroundColor: 'var(--primary-color)',
-        borderRadius: '8px',
-        boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.25)',
-        position: 'relative',
-        width: '220px',
-        height: '300px',
-      }}
     >
-      <Skeleton
+      <Styles.SkeletonRectangular
         animation='wave'
         variant='rectangular'
         height={130}
         width={150}
-        style={{
-          margin: '0 auto',
-        }}
       />
 
       <Stack spacing={2} direction={'row'} alignItems={'center'}>
@@ -58,17 +38,7 @@ export function ProductSkeleton() {
         <Skeleton animation='wave' variant='text' sx={{ fontSize: '.6rem' }} />
         <Skeleton animation='wave' variant='text' sx={{ fontSize: '.6rem' }} />
       </Stack>
-      <Skeleton
-        animation='wave'
-        variant='rounded'
-        width={'100%'}
-        height={32}
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-        }}
-      />
-    </MotionStack>
+      <Styles.SkeletonButton animation='wave' variant='rounded' />
+    </Styles.MotionStack>
   )
 }

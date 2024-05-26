@@ -1,9 +1,9 @@
-import { fireEvent, render, screen } from '@testing-library/react'
-import { faker } from '@faker-js/faker'
 import { Cart } from '@/components/cart'
 import store from '@/lib/redux/store'
-import { Provider } from 'react-redux'
 import CartProvider from '@/providers/cart-provider'
+import { faker } from '@faker-js/faker'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { Provider } from 'react-redux'
 
 import '@testing-library/jest-dom'
 

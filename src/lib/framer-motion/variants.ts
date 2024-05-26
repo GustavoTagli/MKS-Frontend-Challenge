@@ -11,7 +11,7 @@ export const cartItemsVariants = {
   },
 }
 
-export const cardVariants = {
+export const cardItemVariants = {
   open: {
     y: 0,
     opacity: 1,
@@ -30,5 +30,14 @@ export const cardVariants = {
     scale: [1, 0.9, 1],
     opacity: [1, 0.9, 0.6, 0],
     transition: { duration: 0.35, damping: 5 },
+  },
+}
+
+export const skeletonVariants = {
+  initial: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { y: { stiffness: 1000, velocity: -100 } },
   },
 }

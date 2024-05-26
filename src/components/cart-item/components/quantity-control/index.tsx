@@ -1,6 +1,6 @@
+import { useCart } from '@/hooks/useCart'
 import { Minus, Plus } from '@phosphor-icons/react'
 import { QuantityControlProps } from './types'
-import { useCart } from '@/hooks/useCart'
 
 import * as Styles from './styles'
 

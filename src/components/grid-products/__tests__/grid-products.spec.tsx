@@ -1,11 +1,11 @@
 import { GridProducts } from '@/components/grid-products'
-import { render, screen } from '@testing-library/react'
-import { faker } from '@faker-js/faker'
-
-import '@testing-library/jest-dom'
-import { Provider } from 'react-redux'
 import store from '@/lib/redux/store'
 import CartProvider from '@/providers/cart-provider'
+import { faker } from '@faker-js/faker'
+import { render, screen } from '@testing-library/react'
+import { Provider } from 'react-redux'
+
+import '@testing-library/jest-dom'
 
 const mockUseProducts = jest.fn()
 

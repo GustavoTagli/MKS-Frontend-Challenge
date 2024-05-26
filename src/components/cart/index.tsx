@@ -9,11 +9,11 @@ import {
   useMotionValue,
   useTransform,
 } from 'framer-motion'
+import { useSnackbar } from 'notistack'
 import { useEffect } from 'react'
 import { CartItem } from '../cart-item'
 import { CloseButton } from '../ui/closeButton'
 import { When } from '../wrappers/when'
-import { useSnackbar } from 'notistack'
 
 import * as Styles from './styles'
 
@@ -32,7 +32,7 @@ export function Cart() {
     })
 
     return animation.stop
-  }, [cartItems])
+  }, [totalAmount, count])
 
   const handleFinishShopping = () => {
     if (cartItems.length === 0) {

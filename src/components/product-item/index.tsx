@@ -3,8 +3,8 @@ import { Product } from '@/types/product'
 import { formatCurrency } from '@/utils/format-currency'
 import { Tooltip } from '@mui/material'
 import Image from 'next/image'
-import { CustomButton } from './components/custom-button'
 import { useSnackbar } from 'notistack'
+import { CustomButton } from './components/custom-button'
 
 import * as Styles from './styles'
 

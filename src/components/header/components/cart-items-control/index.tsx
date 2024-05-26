@@ -1,7 +1,7 @@
 'use client'
 
-import { ShoppingCart } from '@phosphor-icons/react'
 import { useCart } from '@/hooks/useCart'
+import { ShoppingCart } from '@phosphor-icons/react'
 
 import * as Styles from './styles'
 
