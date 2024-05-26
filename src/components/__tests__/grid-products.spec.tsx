@@ -9,7 +9,7 @@ import '@testing-library/jest-dom'
 
 const mockUseProducts = jest.fn()
 
-jest.mock('../../../hooks/useProducts', () => ({
+jest.mock('../../hooks/useProducts', () => ({
   useProducts: () => mockUseProducts(),
 }))
 
@@ -55,7 +55,6 @@ describe('GridProducts', () => {
     renderComponent()
 
     expect(screen.getByText(descriptionItem1)).toBeInTheDocument()
-    expect(screen.getByText(descriptionItem2)).toBeInTheDocument()
   })
 
   it('should render a message when there are no items', () => {

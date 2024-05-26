@@ -9,7 +9,7 @@ import '@testing-library/jest-dom'
 
 const mockUseCart = jest.fn()
 
-jest.mock('../../../hooks/useCart', () => ({
+jest.mock('../../hooks/useCart', () => ({
   useCart: () => mockUseCart(),
 }))
 
