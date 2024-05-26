@@ -9,6 +9,7 @@ Esta aplicação é um ecommerce construído com o framework Next.js integrado a
 - Next.js
 - Typescript
 - React-query
+- Redux
 - Axios
 - Styled-components
 - Material.ui
