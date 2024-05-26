@@ -14,7 +14,7 @@ export const ProductContainer = styled(motion.div)`
   gap: 14px;
 
   background-color: var(--primary-color);
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1352);
   border-radius: 8px;
   overflow: hidden;
   cursor: default;
